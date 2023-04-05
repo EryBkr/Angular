@@ -1,15 +1,13 @@
-<h1>Hello</h1>
+<input id="name" (keyup)="getValue()" type="text">
 
-<!-- Manuel oluşturduğumuz component'i çağırdık -->
-<test-selector></test-selector>
+<!-- $event bizim elemente ait tüm özellikleri bünyesinde taşır  -->
+<input id="surname" (keyup)="getEvent($event)" type="text">
 
-<span>{{name}}</span>
+<!-- #nickname ile $event'te olduğu gibi elementin tüm özelliklerini yakalayabiliyoruz  -->
+<!-- Burada ki fark parametre olarak göndermemize gerek olmaması -->
+<input id="nickname" #nickname (keyup)="getNickName()" type="text">
 
-<!-- Property Binding -->
-<h2 [innerText]="name"></h2>
-
-<!--Example 2 -->
-<input type="text" [value]="name">
-
-<!-- Event Binding -->
-<button (click)="exampleMetot()">Tıkla Gelsin</button>
+<!-- Sadece form elementlerinde geçerlidir (içine değer alabilen) -->
+<!-- [] ile ts dosyasından veri alır, () ile de ts dosyasına veri gönderebilir -->
+<input [(ngModel)]="name" type="text">
+<button (click)="getNameNgModel()">Tıkla</button>

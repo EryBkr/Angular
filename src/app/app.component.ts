@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  // template: '<h1>HTML olmadan da çalışırım</h1>',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  //styles:["body{background-color:red;}"] şeklinde de inline çalışabiliriz ama ne gerek var ;)
 })
 export class AppComponent {
-  title = 'my-app';
+  getValue() {
+    //JS ile html elementini handle ediyorum
+    let element: any = document.getElementById('name');
+    //element içerisinde ki value değerini handle ediyorum
+    console.log(element.value);
+  }
 
-  //Bu şekilde çoklu değer verebiliyoruz
-  name: string | number = 'eray';
+  //event parametresi içerisinde belirlediğimiz element'e ait tüm özellikleri aldık
+  getEvent(event: any) {
+    console.log(event.target.value);
+  }
 
-  //Bu şekilde çoklu değer verebiliyoruz ve undefined olarak tanımladığımız için ilk değer ataması yapmadığımız halde sorun olmadı
-  test: string | undefined;
+  //#nickname in ait olduğu elemente direkt bu şekilde bind işlemi kurabiliyoruz
+  @ViewChild('nickname') nickName: ElementRef<HTMLInputElement>;
+  getNickName() {
+    console.log(this.nickName.nativeElement.value);
+  }
 
-  exampleMetot() {
-    alert('Work');
+  name:string="Input ile bind edildiği için direkt içerisine yazacak";
+  getNameNgModel(){
+    //ngModel aracılığıyla değeri alabiliyoruz
+    alert(this.name);
   }
 }
