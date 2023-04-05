@@ -1,13 +1,22 @@
-<input id="name" (keyup)="getValue()" type="text">
-
-<!-- $event bizim elemente ait tüm özellikleri bünyesinde taşır  -->
-<input id="surname" (keyup)="getEvent($event)" type="text">
-
-<!-- #nickname ile $event'te olduğu gibi elementin tüm özelliklerini yakalayabiliyoruz  -->
-<!-- Burada ki fark parametre olarak göndermemize gerek olmaması -->
-<input id="nickname" #nickname (keyup)="getNickName()" type="text">
-
-<!-- Sadece form elementlerinde geçerlidir (içine değer alabilen) -->
-<!-- [] ile ts dosyasından veri alır, () ile de ts dosyasına veri gönderebilir -->
-<input [(ngModel)]="name" type="text">
-<button (click)="getNameNgModel()">Tıkla</button>
+<h1>Kredi Hesaplama Formu</h1>
+<div>
+  <label for="">Kredi Tutarı: </label>
+  <!-- creaditCost değişkenine bind ettik -->
+  <input type="number" [(ngModel)]="creaditCost">
+  <div>
+    <label for="">Taksit Tutarı</label>
+    <!-- installmentCost değişkenine bind ettik -->
+    <select [(ngModel)]="installmentCost">
+      <option value="1">1</option>
+      <option value="6">6</option>
+      <option value="9">9</option>
+    </select>
+  </div>
+  <div>
+    <!-- Malumunuz event binding -->
+    <button (click)="creditCalculator()">Hesapla</button>
+  </div>
+</div>
+<hr>
+<!-- ngModel ile yapılan bind işlemi sadece içerisine value alabilen elementlere uygulanabiliyordu burada {{}} kullanma nedenimiz budur -->
+<h4>Aylık Taksit Tutarı: {{installmentPerMounth}}</h4>
