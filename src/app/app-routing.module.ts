@@ -1,29 +1,46 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { C1Component } from './components/c1/c1.component';
-import { C2Component } from './components/c2/c2.component';
-import { C3Component } from './components/c3/c3.component';
-import { C1Route } from './components/c1/c1.route';
+import { LayoutComponent } from './components/layout/layout.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContantComponent } from './components/contant/contant.component';
+import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-//Routing yönetimi için oluşturulan module
+//Layout altında ki children tanımlamalarıyla birlikte artık layout içerisinde açıklarak componentleri belirliyorum
 const routes: Routes = [
+  //Login'i en yukarıda tanımlama nedenimiz routing file yukarıdan aşağıya okunduğu içindir. normalde localhost:4200/login dediğimiz zaman gidebileceğimiz bir component olmasına rağmen
+  //notfound component yukarı olduğu için sanki login yokmuş gibi davranıyor, ve logini açması gerekirsen notfound component yükleniyor
   {
-    path: '', //url boş ise C1Componenti yüklensin
-    component: C1Component,
-  },
-  C1Route,//Bu route kendi componenti içerisinde oluşturulmuş ve burada declare edilmiştir
-  {
-    path: 'c2',
-    component: C2Component,
+    //Login standart layout ile açılmasın diye onu child kısmından ayırdım
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: 'c3',
-    component: C3Component,
-  },
-  {//Hiç bir adres patterni uymuyorsa aşağıda tanımladığım bir component'e gidecektir
-    path:"**",
-    component:NotFoundComponent
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+      },
+      {
+        path: 'contact',
+        component: ContantComponent,
+      },
+      { //Hiç eşleşme yok ise notfound çalışsın
+        path: '**',
+        component: NotFoundComponent,
+      },
+    ],
   }
 ];
 
