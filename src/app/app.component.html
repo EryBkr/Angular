@@ -1,22 +1,10 @@
-<h1>Kredi Hesaplama Formu</h1>
-<div>
-  <label for="">Kredi Tutarı: </label>
-  <!-- creaditCost değişkenine bind ettik -->
-  <input type="number" [(ngModel)]="creaditCost">
-  <div>
-    <label for="">Taksit Tutarı</label>
-    <!-- installmentCost değişkenine bind ettik -->
-    <select [(ngModel)]="installmentCost">
-      <option value="1">1</option>
-      <option value="6">6</option>
-      <option value="9">9</option>
-    </select>
-  </div>
-  <div>
-    <!-- Malumunuz event binding -->
-    <button (click)="creditCalculator()">Hesapla</button>
-  </div>
-</div>
-<hr>
-<!-- ngModel ile yapılan bind işlemi sadece içerisine value alabilen elementlere uygulanabiliyordu burada {{}} kullanma nedenimiz budur -->
-<h4>Aylık Taksit Tutarı: {{installmentPerMounth}}</h4>
+<h1>App Component</h1>
+<!-- href kullanmama nedenimiz sayfanın refresh olmasıdır,bu da gereksiz maaliyet demektir -->
+<a routerLink="/c1">Go to C1</a>
+
+<a routerLink="/c2">Go to C2</a>
+
+<a routerLink="/c3">Go to C3</a>
+
+<!-- RenderBody gibi düşünebilirsiniz -->
+<router-outlet></router-outlet>
