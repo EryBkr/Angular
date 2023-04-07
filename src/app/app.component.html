@@ -1,9 +1,8 @@
-<!-- component.ts dosyamız da ki değişkenin durumuna göre button'ların gözüküp gözükemeyeceklerine karar veriyorum -->
-<!-- check template bir nevi section gibi çalışır isActive'in statusune göre gözüküp gözükmeme durumunu kontrol ediyoruz -->
-<button *ngIf="!isActive ; else check" (click)="changeActiveStatus()">Aktif Et</button>
-<button *ngIf="isActive" (click)="changeActiveStatus()">Pasife Çek</button>
+<ul>
+  <!-- * işareti bu arkadaşın bir direktif olduğunu belirtiyor -->
+  <!-- ngFor ile array içerisinde bulunan meyvenin ismini yazdırdık -->
+  <li *ngFor="let meyve of meyveler">{{meyve}}</li>
 
-<!-- else ile birlikte kullanımı -->
-<ng-template #check>
-  <p>Check paragrafı</p>
-</ng-template>
+  <!-- array'in index değeri lazım olursa da bu şekilde -->
+  <li *ngFor="let meyve of meyveler let index=index">{{index}}</li>
+</ul>

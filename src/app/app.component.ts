@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isActive: boolean = true;
-
-  //isActive'in status'unü değiştirecek
-  changeActiveStatus() {
-    this.isActive = !this.isActive;
-  }
+  meyveler: string[] = ["apple","pineappel","watermelon"];
 }
