@@ -30,18 +30,14 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/bootstrap"
-              ]
-            },
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
@@ -106,6 +102,6 @@
     }
   },
   "cli": {
-    "analytics": "0c5941ee-7b94-4ce5-8657-7c24f3fdb039"
+    "analytics": "7c71169d-5bcd-488e-b647-ac04241db3a2"
   }
 }

@@ -1,10 +1,15 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-//app.components için html sayfasına bile gerek duymadım, sadece router-outlet bizim için yeterlidir
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isActive: boolean = true;
 
+  //isActive'in status'unü değiştirecek
+  changeActiveStatus() {
+    this.isActive = !this.isActive;
+  }
 }

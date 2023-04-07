@@ -1,0 +1,9 @@
+<!-- component.ts dosyamız da ki değişkenin durumuna göre button'ların gözüküp gözükemeyeceklerine karar veriyorum -->
+<!-- check template bir nevi section gibi çalışır isActive'in statusune göre gözüküp gözükmeme durumunu kontrol ediyoruz -->
+<button *ngIf="!isActive ; else check" (click)="changeActiveStatus()">Aktif Et</button>
+<button *ngIf="isActive" (click)="changeActiveStatus()">Pasife Çek</button>
+
+<!-- else ile birlikte kullanımı -->
+<ng-template #check>
+  <p>Check paragrafı</p>
+</ng-template>
