@@ -1,22 +1,7 @@
-<div class="container mt-2">
-  <h1>XOX Game</h1>
-  <!-- Sırada ki mark'ın kime ait olduğunu belirtecek -->
-  <h2 class="alert alert-warning text-center">{{message}}</h2>
-  <!-- Tahtayı sıfırlayacak -->
-  <button class="btn btn-primary w-100" (click)="newGame()">New Game</button>
-  <div class="row">
-    <!-- Tabloyu çiziyoruz, 3x3 olacak -->
-    <!-- Tıklama event'ini div'e verdik -->
-    <!-- ngClass ile index'in winner durumuna göre yeşile boyuyoruz -->
-    <button (click)="setMark(index)" style="border: 1px solid #ccc;height: 120px;;" class="col-md-4 btn text-center"
-      [ngClass]="changeWinnerButtonClass(game.winner)" *ngFor="let game of games let index=index">
-      <span style="font-size: 80px;">
-        {{game.mark}}
-      </span>
-    </button>
-  </div>
-  <hr>
-  <!-- bu arkadaş sayesinde oyunun herhangi bir anına gideceğiz -->
-  <button (click)="returnSelectMove(i)" *ngFor="let move of moves let i=index"
-    class="btn btn-sm btn-danger mx-1 my-1">{{i+1}}. Hamle</button>
-</div>
+<!-- Oluşturmuş olduğum directive'i elemente verdim (Attribute Directive) -->
+<!-- Test mevcut directive'imizde bulunan bir property'dir -->
+<h1 appColorize="Yellow" test="red">Direvice</h1>
+<a appMyRouterDirective="/c1">Component 1</a> || <a appMyRouterDirective="/c2">Component 2</a>
+
+<!-- Gelen componentlerin yüklenmesi için ekledik -->
+<router-outlet></router-outlet>

@@ -1,0 +1,5 @@
+<h1>Form Validation Directive</h1>
+<form>
+  <!-- name.validity.valid değerini alabilmek için form tagleri arasında olmamız gerekmektedir -->
+  <input #name type="text" [appValid]="name.validity.valid" minlength="3" maxlength="10" required class="form-control">
+</form>
