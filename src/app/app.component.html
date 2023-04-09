@@ -1,57 +1,22 @@
-<div class="container">
-  <h1>Todo App</h1>
-  <hr>
-
-  <!-- Add -->
-  <!-- UpdateForm true değilse ekleme formu görüntülenecek -->
-  <!-- Gerekli şart sağlanmaz ise Güncelleme formuna bağlı ng-template görüntülenecek -->
-  <div *ngIf="!isActiveUpdateForm; else activeUpdateForm">
-    <div class="form-group">
-      <label for="work">Yapılacak İş</label>
-      <!-- Two Way Binding ile ts dosyamız da ki work değişkenine bağladık -->
-      <!-- class attribute binding ile validasyon durumumuza göre class ataması gerçekleştiriyoruz,basit bir mantık zaten -->
-      <!-- <input type="text" [class]="changeInputClassForValidation()" id="work" name="work" [(ngModel)]="work"> -->
-      <!-- ngClass ise bizim class'ımıza ek yapıyor yanı nihai olarak class="form-control is-valid" gibi bir değere sahip oluyor -->
-      <input type="text" class="form-control" [ngClass]="changeInputClassForValidation()" id="work" name="work" [(ngModel)]="work">
-      <!-- yukarıda ki arkadaş invalid class'a sahipse bu yazı otomatik olarak çıkacaktır,bootstrap scriptinin kontrol ettiği bir durum -->
-      <div class="invalid-feedback">En Az 3 Karakter girmelisiniz</div>
-    </div>
-    <div class="form-group mt-2">
-      <!-- button'a basıldığında save metodu çalışacak -->
-      <!-- Disabled  attribute binding ile input ta bulunan datanın karakteri 3 ten küçük ise Kaydet butonunu disabled yapıyorum -->
-      <button [disabled]="work.length<3" class="btn btn-warning w-100" (click)="save()">Kaydet</button>
-    </div>
+<div class="container mt-2">
+  <h1>XOX Game</h1>
+  <!-- Sırada ki mark'ın kime ait olduğunu belirtecek -->
+  <h2 class="alert alert-warning text-center">{{message}}</h2>
+  <!-- Tahtayı sıfırlayacak -->
+  <button class="btn btn-primary w-100" (click)="newGame()">New Game</button>
+  <div class="row">
+    <!-- Tabloyu çiziyoruz, 3x3 olacak -->
+    <!-- Tıklama event'ini div'e verdik -->
+    <!-- ngClass ile index'in winner durumuna göre yeşile boyuyoruz -->
+    <button (click)="setMark(index)" style="border: 1px solid #ccc;height: 120px;;" class="col-md-4 btn text-center"
+      [ngClass]="changeWinnerButtonClass(game.winner)" *ngFor="let game of games let index=index">
+      <span style="font-size: 80px;">
+        {{game.mark}}
+      </span>
+    </button>
   </div>
-
-  <!-- Update -->
-  <!-- UpdateForm false değilse güncelleme formu görüntülenecek -->
-  <!-- Yukarıda kullandığımız ngIf ile birlikte eğer gerekli şart sağlanmazsa Güncelleme formu görüntülenecek -->
-  <ng-template #activeUpdateForm>
-    <div class="form-group">
-      <!-- Güncellenecek data yı label da gösteriyorum -->
-      <label for="work">{{updatedWork}}</label>
-      <!-- Two Way Binding ile ts dosyamız da ki updatedWork değişkenine bağladık -->
-      <input type="text" class="form-control" id="updatedWork" name="updatedWork" [(ngModel)]="updatedWork">
-    </div>
-    <div class="form-group mt-2">
-      <!-- button'a basıldığında update metodu çalışacak -->
-      <button class="btn btn-success mb-1 w-100" (click)="update()">Güncelle</button>
-      <button class="btn btn-danger w-100" (click)="cancelUpdateAction()">Vazgeç</button>
-    </div>
-  </ng-template>
-
   <hr>
-  <ul>
-    <!-- works dizisini directive yardımıyla burada dönüyorum -->
-    <li class="p-1" *ngFor="let work of works let index=index">
-      {{work}}
-
-      <!-- Güncelleme formu aktif değilse bu buttonlar gözüksün -->
-      <div *ngIf="!isActiveUpdateForm">
-        <button class="btn btn-info btn-sm m-1" (click)="viewUpdateForm(work,index)">Güncelle</button>
-        <button class="btn btn-danger btn-sm m-1" (click)="remove(index)">Sil</button>
-      </div>
-
-    </li>
-  </ul>
+  <!-- bu arkadaş sayesinde oyunun herhangi bir anına gideceğiz -->
+  <button (click)="returnSelectMove(i)" *ngFor="let move of moves let i=index"
+    class="btn btn-sm btn-danger mx-1 my-1">{{i+1}}. Hamle</button>
 </div>
