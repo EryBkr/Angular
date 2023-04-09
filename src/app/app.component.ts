@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArrayServiceService } from './services/array-service.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
+  //Servisi HTML tarafında da kullanmak istersem public olarak tanımlıyorum
+  constructor(public arrayService: ArrayServiceService) {}
 }
