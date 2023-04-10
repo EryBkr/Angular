@@ -1,8 +1,6 @@
-<!-- Alt Komponenti mi çağırdım -->
-<p>Name: <strong>{{name}}</strong></p>
+<h1>Input/Output Example</h1>
+<input [(ngModel)]="work" type="text">
+<button (click)="add()">Save</button>
 
-<!-- Alt komponente değer aktarımı yapabilmek için gerekli componentin ana componente bağımlı olması gerekmektedir -->
-<!-- Biz aşağıda ki şekilde direkt değer verebileceğimiz gibi ikinci örnekteki gibi name değişkenini bind edebiliriz-->
-<!-- <app-c1 name="name"></app-c1> -->
-<!-- changeNameEvent alt komponentten gelmektedir -->
-<app-c1 [name]="name" (changeNameEvent)="changeName($event)"></app-c1>
+<!-- Alt komponentime todo listesini veriyorum -->
+<app-todolist [todos]="todos"></app-todolist>

@@ -6,10 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  name: string = 'Eray';
+  work: string = '';
+  todos: string[] = [];
 
-  //Bu arkadaş c1 komponentindeki changeNameEvent'e bağlandı, event aracılığıyla gerekli datayı alıyoruz
-  changeName(event: string) {
-    this.name = event;
+  add() {
+    this.todos.push(this.work);
+    this.work = '';
   }
 }

@@ -1,0 +1,10 @@
+<h1>Bu Sefer Alt Komponentten Ana Komponente Data Gelecek</h1>
+
+
+<!--Child Componenten Gelen Eventi addWork fonksiyonuna gönderiyorum ve listeye ekleme işlemini gerçekleştiriyorum-->
+<app-reverse-to-do-list (sentParent)="addWork($event)"></app-reverse-to-do-list>
+
+<hr>
+<ul *ngFor="let todo of todos">
+  <li>{{todo}}</li>
+</ul>
