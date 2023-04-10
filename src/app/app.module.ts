@@ -4,19 +4,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { C2Component } from './c2/c2.component';
+import { NamePipe } from './pipes/name.pipe';
+import { UserListPipe } from './pipes/user-list.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    C2Component
+    NamePipe,
+    UserListPipe, //pipe kullanımı için eklendi,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule //Form işlemleri için ekledik
+    FormsModule, //Form işlemleri için ekledik
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DatePipe], //Angular ın içerisinden gelen DatePipe'ı component.ts te kullanabilmek için ekledim
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,13 +1,32 @@
-<!-- scriptler ve değişkenler direkt service bağlı -->
-<input [(ngModel)]="arrayService.name" type="text">
-<button (click)="arrayService.save()">Save</button>
-<hr>
-<ul *ngFor="let name of arrayService.names">
-  <li>{{name}}</li>
+<h1>Pipes</h1>
+<!-- CLASSIC PIPE -->
+<!-- arama için input -->
+<input [(ngModel)]="search" type="text">
+<ul>
+  <!--value | pipeName:[ikinci parametre] -->
+  <!-- Pipe sayesinde data'nın çıktısını manipüle ettik -->
+  <li *ngFor="let name of names | namePipe:search">
+    {{name}}
+  </li>
+
+
+  <li *ngFor="let user of userList | userListPipe:search">
+    {{user.name}} - {{user.age}}
+  </li>
 </ul>
 
-<!-- Servisimi eklediğim c2 componentini de burada çağırıyorum -->
-<!-- Angular'ın çok güzel bir özelliği olarak,
-   servisimiz sayesinde state management servis
-   taraınfdan yönetiliyor ve değerleri diğer componentlerde de görebiliyoruz -->
-<app-c2></app-c2>
+<!-- DATE PIPE -->
+<!-- Tarihin karışık gözükmemesi için date pipe'ı kullandım,bu pipe angular'ın içerisinden gelmektedir -->
+<h4>{{dateString | date:"dd.MM.yyyy"}}</h4>
+<input type="date" [(ngModel)]="testDateString">
+
+<!-- CURRENCY PIPE -->
+<!-- Para Formatlama için  -->
+<input type="text" [(ngModel)]="money">
+<h4>{{money | currency:"TRY":"symbol-narrow":"1.2-2"}}</h4>
+
+<!-- Lower Case,Upper Case,TitleCase PIPE -->
+<input type="text" [(ngModel)]="title">
+<h4>{{title | lowercase}}</h4>
+<h4>{{title | uppercase}}</h4>
+<h4>{{title | titlecase}}</h4>
