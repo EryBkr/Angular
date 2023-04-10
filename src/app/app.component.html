@@ -1,11 +1,8 @@
-<div class="container mt-2">
-  <div class="row">
-    <button class="btn btn-sm btn-warning" routerLink="/home">Home</button>
-    <button class="btn btn-sm btn-success mt-3" routerLink="/login">Login</button>
-    <button class="btn btn-sm btn-primary mt-3" routerLink="/layout/editor">Manage</button>
-    <hr>
-  </div>
-  <div class="row">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<!-- Alt Komponenti mi çağırdım -->
+<p>Name: <strong>{{name}}</strong></p>
+
+<!-- Alt komponente değer aktarımı yapabilmek için gerekli componentin ana componente bağımlı olması gerekmektedir -->
+<!-- Biz aşağıda ki şekilde direkt değer verebileceğimiz gibi ikinci örnekteki gibi name değişkenini bind edebiliriz-->
+<!-- <app-c1 name="name"></app-c1> -->
+<!-- changeNameEvent alt komponentten gelmektedir -->
+<app-c1 [name]="name" (changeNameEvent)="changeName($event)"></app-c1>
