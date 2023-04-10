@@ -1,0 +1,5 @@
+<!-- Deactive kullanımı için servisimde ki değişkenleri kullandım,kendisi state management'i sağlıyordu zaten -->
+<p>home works!</p>
+<p>{{_deactiveService.edit?"Güncelleme Açık":"Güncelleme Kapalı"}}</p>
+<button *ngIf="!_deactiveService.edit" (click)="_deactiveService.edit=true">Güncelleme Kısmını Aç</button>
+<button *ngIf="_deactiveService.edit" (click)="_deactiveService.edit=false">Güncelleme Kısmını Kapat</button>

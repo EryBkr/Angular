@@ -1,32 +1,11 @@
-<h1>Pipes</h1>
-<!-- CLASSIC PIPE -->
-<!-- arama için input -->
-<input [(ngModel)]="search" type="text">
-<ul>
-  <!--value | pipeName:[ikinci parametre] -->
-  <!-- Pipe sayesinde data'nın çıktısını manipüle ettik -->
-  <li *ngFor="let name of names | namePipe:search">
-    {{name}}
-  </li>
-
-
-  <li *ngFor="let user of userList | userListPipe:search">
-    {{user.name}} - {{user.age}}
-  </li>
-</ul>
-
-<!-- DATE PIPE -->
-<!-- Tarihin karışık gözükmemesi için date pipe'ı kullandım,bu pipe angular'ın içerisinden gelmektedir -->
-<h4>{{dateString | date:"dd.MM.yyyy"}}</h4>
-<input type="date" [(ngModel)]="testDateString">
-
-<!-- CURRENCY PIPE -->
-<!-- Para Formatlama için  -->
-<input type="text" [(ngModel)]="money">
-<h4>{{money | currency:"TRY":"symbol-narrow":"1.2-2"}}</h4>
-
-<!-- Lower Case,Upper Case,TitleCase PIPE -->
-<input type="text" [(ngModel)]="title">
-<h4>{{title | lowercase}}</h4>
-<h4>{{title | uppercase}}</h4>
-<h4>{{title | titlecase}}</h4>
+<div class="container mt-2">
+  <div class="row">
+    <button class="btn btn-sm btn-warning" routerLink="/home">Home</button>
+    <button class="btn btn-sm btn-success mt-3" routerLink="/login">Login</button>
+    <button class="btn btn-sm btn-primary mt-3" routerLink="/layout/editor">Manage</button>
+    <hr>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
