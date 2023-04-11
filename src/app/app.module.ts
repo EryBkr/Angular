@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ErrorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,9 +14,21 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule, //Form işlemleri için ekledik
-    HttpClientModule,//HTTP istekleri için ekledim
+    HttpClientModule, //HTTP istekleri için ekledim
   ],
-  providers: [],
+  //Interceptor'u projeme ekledim
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi:true //Birden fazla interceptor kullanılabilir mi
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlingInterceptor,
+      multi:true //Birden fazla interceptor kullanılabilir mi
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
