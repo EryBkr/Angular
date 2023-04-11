@@ -1,4 +1,21 @@
-<router-outlet></router-outlet>
-
-
-<button class="btn btn-sm btn-info" routerLink="/admin">Go Admin</button>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- State'imi görüntüleyecek ve tetikleyecek html elementleri  -->
+      <!-- count$ observable olduğu için async pipe kullanıldı -->
+      <div>
+        <button type="button" class="btn btn-primary position-relative">
+          Current Count:
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{count$ | async}}
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- State'imi tutan counter componenti -->
+      <app-counter></app-counter>
+    </div>
+  </div>
+</div>
