@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  work: string = '';
-  todos: string[] = [];
 
-  add() {
-    this.todos.push(this.work);
-    this.work = '';
-  }
 }
