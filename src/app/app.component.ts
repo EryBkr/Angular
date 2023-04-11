@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { addUser } from './state-management/actions/users.action';
+import { UserModel } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  //Store da tanımladığım count değişkenini simgeliyor
-  count$: Observable<number>;
+  //Modelimi Create ediyorum
+  user: UserModel = new UserModel();
 
-  //count ifadesinin module içerisinde ki değişken ismiyle aynı olması önemli
-  constructor(private _store: Store<{ count: number }>) {
-    //Store daki değeri count'a aktarıyorum,state erişimi...
-    this.count$ = _store.select('count');
+  //Store'a erişiyorum ve onun aracılığıyla users Stateini handle ediyorum
+  constructor(private _store: Store<{ users: UserModel[] }>) {}
+
+  add() {
+    //Action benden parametre bekliyordu onu da gönderdim,action reducer'i tetikleyecek , reducer'de Store da gerekli işlemleri yapacak aslında
+    //State'te barınan users listesine değer eklemiş oldum
+    this._store.dispatch(addUser({ user: this.user }));
+    this.user = new UserModel();
   }
 }
