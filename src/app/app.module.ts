@@ -4,16 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { TodolistComponent } from './components/todolist/todolist.component';
-import { ReverseToDoListComponent } from './components/reverse-to-do-list/reverse-to-do-list.component';
-import { ReverseAppComponent } from './components/reverse-app/reverse-app.component';
+import { C1Component } from './components/c1/c1.component';
+import { C2Component } from './components/c2/c2.component';
+import { C3Component } from './components/c3/c3.component';
+import { TableComponent } from './components/table/table.component';
+import { SelectboxComponent } from './components/selectbox/selectbox.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodolistComponent,
-    ReverseToDoListComponent,
-    ReverseAppComponent,
+    C1Component,
+    C2Component,
+    C3Component,
+    TableComponent,
+    SelectboxComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +26,6 @@ import { ReverseAppComponent } from './components/reverse-app/reverse-app.compon
     FormsModule, //Form işlemleri için ekledik
   ],
   providers: [],
-  bootstrap: [ReverseAppComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,15 @@
-<h1>Input/Output Example</h1>
-<input [(ngModel)]="work" type="text">
-<button (click)="add()">Save</button>
+<h1>Generic Components</h1>
 
-<!-- Alt komponentime todo listesini veriyorum -->
-<app-todolist [todos]="todos"></app-todolist>
+<a routerLink="">C1</a>
+<a routerLink="/c2">C2</a>
+<a routerLink="/c3">C3</a>
+
+<!-- Generic Selectbox'um -->
+<app-selectbox>
+  <option value="1">7</option>
+  <option value="2">6</option>
+  <option value="3">5</option>
+  <option value="4">4</option>
+</app-selectbox>
+
+<router-outlet></router-outlet>

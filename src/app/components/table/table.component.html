@@ -1,0 +1,21 @@
+<!-- ng-content'i bir kez kullanabilirim ama componentimiz çeşitli yerlerine müdahale etmek isteyebiliriz
+   ondan dolayı ng-template yapısı aracılığıyla eşleştirme yapabiliyorum -->
+<ng-template #tfoot></ng-template>
+
+
+<!-- Generic olacak componentimiz -->
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <!-- Generic yapı da olduğu için dinamik olarak heads array'inden yüklenmesini sağlamalıyım -->
+      <th *ngFor="let head of heads">{{head}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Buraya kullanıldığı component içerisinde ne istiyorsak verebiliriz, bayağı html değişkeni gibi bir şey aslında -->
+   <ng-content></ng-content>
+  </tbody>
+  <tfoot>
+    <ng-container *ngTemplateOutlet="tfoot"></ng-container>
+  </tfoot>
+</table>
