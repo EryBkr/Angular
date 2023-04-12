@@ -1,23 +1,34 @@
 import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
-//Routing'imi de oluşturdum
-//Her bir component farklı module'de barınıyor,onları bu şekilde çağırabiliyoruz,bu sayede sayfa ilk açılığı zaman kullanılmayan component'ler yüklenmemiş oluyor
 const routes: Routes = [
   {
-    path: 'c1',
+    //Login layout'a bağlı değil o yüzden loadchildren kullanmadık dikkat ederseniz
+    path: 'login',
     loadChildren: () =>
-      import('./components/c1/c1.module').then((module) => module.C1Module),
+      import('./components/login/login.module').then(
+        (module) => module.LoginModule
+      ),
+    component: LoginComponent,
   },
   {
-    path: 'c2',
+    //Adres  çubuğu boş ise layoutModule yüklenecek , artık içerisinde ki routing'ten layout sorumlu
+    path: '',
     loadChildren: () =>
-      import('./components/c2/c2.module').then((module) => module.C2Module),
+      import('./components/layouts/layouts.module').then(
+        (module) => module.LayoutsModule
+      ),
   },
   {
-    path: 'c3',
+    // **ibaresi path routing tarafından eşleştirilemiyorsa kullanılıyor
+    path: '**',
     loadChildren: () =>
-      import('./components/c3/c3.module').then((module) => module.C3Module),
+      import('./components/not-found/not-found.module').then(
+        (module) => module.NotFoundModule
+      ),
+    component: NotFoundComponent,
   },
 ];
 
