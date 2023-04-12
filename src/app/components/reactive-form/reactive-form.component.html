@@ -1,0 +1,82 @@
+<h1>Reactive Form ile Personel Ekleme</h1>
+
+<!-- Reactive Form için oluşturduğum entity'i form'a tanıtıyorum -->
+<!-- Form Add -->
+<div *ngIf="!isUpdateFormActive">
+  <form [formGroup]="addForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Personel Adı</label>
+      <!-- formControlName="name" ile bu input'un formdaki karşılığını veriyorum -->
+      <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="name">
+      <div id="name" class="form-text">We'll never share your namr with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Departman</label>
+      <select formControlName="department" id="department" class="form-select">
+        <option>Muhasebe</option>
+        <option>Finans</option>
+        <option>Yazılım</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">işe Giriş Tarihi</label>
+      <input formControlName="startingDate" type="date" class="form-control" id="date" aria-describedby="date">
+      <div id="date" class="form-text">We'll never share your date with anyone else.</div>
+    </div>
+    <!-- Form Validasyon kurallarına uygun mu değilse disabled ile kitledik -->
+    <button [disabled]="!addForm.valid" (click)="save()" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+<!-- Form Update -->
+<div *ngIf="isUpdateFormActive">
+  <form [formGroup]="updateForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Personel Adı</label>
+      <!-- formControlName="name" ile bu input'un formdaki karşılığını veriyorum -->
+      <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="name">
+      <div id="name" class="form-text">We'll never share your namr with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="department" class="form-label">Departman</label>
+      <select formControlName="department" id="department" class="form-select">
+        <option>Muhasebe</option>
+        <option>Finans</option>
+        <option>Yazılım</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">işe Giriş Tarihi</label>
+      <input formControlName="startingDate" type="date" class="form-control" id="date" aria-describedby="date">
+      <div id="date" class="form-text">We'll never share your date with anyone else.</div>
+    </div>
+    <!-- Form Validasyon kurallarına uygun mu değilse disabled ile kitledik -->
+    <button [disabled]="!updateForm.valid" (click)="update()" class="btn btn-primary">Submit</button>
+    <button (click)="cancel()" class="btn btn-sm btn-warning">Cancel</button>
+  </form>
+</div>
+
+<hr>
+
+<!-- Bu arkadaş personel listesini dönecek -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">İsim</th>
+      <th scope="col">Departman</th>
+      <th scope="col">Tarih</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees let index=index">
+      <td>{{index+1}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.department}}</td>
+      <td>{{employee.startingDate}}</td>
+      <td><button class="btn btn-sm btn-info" (click)="get(employee,index)">Güncelle</button></td>
+    </tr>
+  </tbody>
+</table>

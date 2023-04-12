@@ -3,32 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ErrorHandlingInterceptor } from './interceptors/error-handling.interceptor';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { NgFormComponent } from './components/ng-form/ng-form.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ReactiveFormComponent, NgFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, //Form işlemleri için ekledik
+    ReactiveFormsModule,//Reactive Form'ları kullanabilmek için ekledik
+    FormsModule, //Form işlemleri için ekledik (Ng-Form)
     HttpClientModule, //HTTP istekleri için ekledim
   ],
-  //Interceptor'u projeme ekledim
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi:true //Birden fazla interceptor kullanılabilir mi
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlingInterceptor,
-      multi:true //Birden fazla interceptor kullanılabilir mi
-    },
-  ],
+  providers: [DatePipe], //Form işlemlerinde tarihi düzenleyebilmek için ekledik
   bootstrap: [AppComponent],
 })
 export class AppModule {}
