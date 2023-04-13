@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/enviroments/enviroment.dev';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -56,6 +57,8 @@ export class AppComponent {
   //ngsw-config.json üzerinden hem ui hemde api için gerekli bazı konfigürasyonlar yaptık
   //Apiden gelen dataları listeye ekledik
   getApi() {
+    //Eğer envrionment'tan değer almak istiyorsak aşağıda ki şekilde alabiliriz. Angular Json tarafında belirlediğimiz path'lerle birlikte build'e göre çalışacaktır
+    var url=environment.api;
     this._httpClient.get('https://jsonplaceholder.typicode.com/todos').subscribe((response: any) => {
       this.listApi = response;
     });

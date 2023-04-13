@@ -40,9 +40,18 @@
             "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
+            "test": {
+              "fileReplacements": [{
+                "replace": "src/enviroments/enviroment.dev.ts",
+                "with": "src/enviroments/enviroment.test.ts"
+              }]
+            },
             "production": {
-              "budgets": [
-                {
+              "fileReplacements": [{
+                "replace": "src/enviroments/enviroment.dev.ts",
+                "with": "src/enviroments/enviroment.prod.ts"
+              }],
+              "budgets": [{
                   "type": "initial",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
