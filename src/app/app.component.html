@@ -1,0 +1,22 @@
+<button (click)="toast()">Success Message</button>
+<button (click)="callSwal()">Sweet Alert Message</button>
+<button (click)="callSpinner()">Execute Spinner</button>
+<button (click)="getApi()">Api Get İsteği Yap</button>
+
+<!-- Spinner için ekledik -->
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<!-- Pagination -->
+<!-- paginate pipe kütüphaneye aittir -->
+<ul>
+  <li *ngFor="let item of collectionForPagination |paginate:{itemsPerPage:10,currentPage:page}">
+    {{item}}
+  </li>
+</ul>
+<!-- Pagination için ekledim,paketin kendisine ait element -->
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+<!-- Api den gelen datalar -->
+<ul>
+  <li *ngFor="let item of listApi">{{item.title}}</li>
+</ul>
